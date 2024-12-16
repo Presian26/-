@@ -1,0 +1,445 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, #4facfe, #00f2fe, #43e97b, #f8ff00);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 60px;
+    position: relative;
+}
+
+.bg-light {
+    background: #f9f9f9;
+    animation: none;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+nav {
+    position: absolute;
+    top: 10px;
+    left:10px;
+    z-index:999;
+}
+
+.top-nav {
+    position: static;
+    margin-bottom:20px;
+}
+
+nav button, .top-nav button {
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav button:hover, .top-nav button:hover {
+    background-color: #16a085;
+    transform: scale(1.05);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 3rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    background: #ffffffcc;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+}
+
+form input, form select, form textarea {
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    font-family: 'Roboto', sans-serif;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #1abc9c;
+}
+
+form input::placeholder, form textarea::placeholder {
+    color: #999;
+}
+
+form button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1abc9c;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+form button:hover {
+    background-color: #16a085;
+    transform: scale(1.03);
+}
+
+.search-bar {
+    padding: 10px;
+    width: 90%;
+    max-width:500px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    outline:none;
+    margin-bottom:20px;
+    font-size:16px;
+}
+
+.notebook {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    background: #ffffffcc;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    backdrop-filter: blur(5px);
+    cursor: grab;
+}
+
+.notebook-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #d35400;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #d35400;
+    padding-bottom: 10px;
+}
+
+.notebook-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.notebook-body .notebook-task {
+    background: #ffffffdd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notebook-task:hover {
+    background-color: #f9f9f9;
+    transform: scale(1.02);
+}
+
+.notebook-task button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    border: none;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.notebook-task button:hover {
+    background-color: #c0392b;
+}
+
+.schedule-container {
+    position: absolute;
+    top: 200px;
+    left: 350px;
+    background: #ffffffcc;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+}
+
+.schedule-header {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 10px 10px 0 0;
+    padding:8px;
+    background-color: #1abc9c;
+    cursor: grab;
+}
+
+canvas {
+    border: 2px solid #1abc9c;
+    border-radius: 15px;
+    background: #ffffffcc;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.legend {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.legend span {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.legend .color-box {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    position: relative;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity:0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity:1;
+        transform: scale(1);
+    }
+}
+
+.modal h2 {
+    margin-top: 0;
+    font-size:1.5rem;
+    margin-bottom:10px;
+}
+
+.modal p {
+    margin-bottom: 10px;
+}
+
+.modal-close {
+    position: absolute;
+    top:10px;
+    right:10px;
+    background:none;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    color:#333;
+}
+
+/* Стилове за all-tasks.html и statistics.html */
+.search-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    gap: 10px;
+}
+
+.search-container input {
+    flex:1;
+    padding:10px;
+    font-size:16px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    outline:none;
+}
+
+.search-container button {
+    background-color: #1abc9c;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items:center;
+    gap:5px;
+}
+
+.search-container button:hover {
+    background-color: #16a085;
+    transform: scale(1.05);
+}
+
+table {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    font-size:16px;
+    vertical-align: middle;
+}
+
+th {
+    background: #1abc9c;
+    color: #fff;
+    cursor: pointer;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+tr:hover td {
+    background:#eafaf8;
+}
+
+.priority-low {color:#2ecc71; font-weight:bold;}
+.priority-medium {color:#f1c40f; font-weight:bold;}
+.priority-high {color:#e74c3c; font-weight:bold;}
+
+button.back-button {
+    background-color: #1abc9c;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+button.back-button:hover {
+    background-color: #16a085;
+    transform: scale(1.05);
+}
+
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.no-tasks {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+img.car-image {
+    max-width:100px;
+    border-radius:8px;
+}
+
+/* Нови бутони за редакция */
+.edit-btn {
+    background-color: #3498db;
+    color: #fff;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    font-size:14px;
+    cursor:pointer;
+    margin-right:5px;
+    transition: background-color 0.3s;
+}
+.edit-btn:hover {
+    background-color: #2980b9;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    font-size:14px;
+    cursor:pointer;
+    transition: background-color 0.3s;
+}
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.edit-modal-overlay .modal {
+    max-width:400px;
+    width:100%;
+}

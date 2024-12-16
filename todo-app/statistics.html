@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-light">
+    <nav class="top-nav">
+        <button onclick="window.location.href='index.html'">Начало</button>
+        <button onclick="window.location.href='all-tasks.html'">Всички задачи</button>
+    </nav>
+    <h1>Статистика на задачите</h1>
+    <div id="statsContainer"></div>
+
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: 'tasks_api.php',
+                method: 'GET',
+                success: function(data){
+                    const total = data.length;
+                    const highCount = data.filter(t=>t.priority==='high').length;
+                    const mediumCount = data.filter(t=>t.priority==='medium').length;
+                    const lowCount = data.filter(t=>t.priority==='low').length;
+
+                    const pendingCount = data.filter(t=>t.status==='pending').length;
+                    const inProgressCount = data.filter(t=>t.status==='in-progress').length;
+                    const doneCount = data.filter(t=>t.status==='done').length;
+
+                    $('#statsContainer').html(`
+                        <p>Общ брой задачи: ${total}</p>
+                        <p>Висок приоритет: ${highCount}</p>
+                        <p>Среден приоритет: ${mediumCount}</p>
+                        <p>Нисък приоритет: ${lowCount}</p>
+                        <hr>
+                        <p>Предстоящи: ${pendingCount}</p>
+                        <p>В процес: ${inProgressCount}</p>
+                        <p>Завършени: ${doneCount}</p>
+                    `);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
